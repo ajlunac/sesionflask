@@ -10,7 +10,7 @@ app.secret_key = 'clave-secreta'
 @app.before_request
 def antes_de_todo():
     ruta = request.path
-    if not 'usuario' in session and ruta!= '/entrar' and ruta!= '/login' and ruta!= '/salir' and ruta!= '/registro':
+    if not 'usuario' in session and ruta!= '/entrar' and ruta!= '/login' and ruta!= '/salir' and ruta!= '/registro' and ruta!= '/registrar':
         flash('Necesitas iniciar sesión para acceder a esta página', 'error')
         return redirect('/entrar')
 
