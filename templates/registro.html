@@ -1,0 +1,33 @@
+{% extends "./base.html" %}
+
+{% block titulo %}
+    Registro de usuario
+{% endblock %}
+
+{% block contenido %}
+    <section>
+        <h3>Registro de usuario</h3>
+
+        <form action="{{ url_for('registrar') }}" method="POST" >
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input autofocus type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div class="mb-3">
+                <label for="contraseña" class="form-label">Contraseña</label>
+                <input type="password" class="form-control" id="contraseña" name="contraseña" required>
+            </div>
+            <div class="mb-3">
+                <button type="submit" class="btn btn-primary">Registrarse</button>
+            </div>
+        </form>
+
+        {% with mesajes_flash = get_flashed_messages() %}
+            {% if mesajes_flash %}
+                {% for mensaje in mesajes_flash %}
+                   <li>{{ mensaje }}</li>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </section>
+{% endblock %}

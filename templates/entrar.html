@@ -1,0 +1,30 @@
+{% extends "./base.html" %}
+
+{% block titulo %}
+    Acceso de usuario
+{% endblock %}
+
+{% block contenido %}
+    <section>
+        <h3>Acceso de usuario</h3>
+
+        <form method="POST" action="{{ url_for('login') }}">
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input autofocus type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div class="mb-3">
+                <label for="contraseña" class="form-label">Contraseña</label>
+                <input type="password" class="form-control" id="contraseña" name="contraseña" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+        </form>
+        {% with mesajes_flash = get_flashed_messages() %}
+            {% if mesajes_flash %}
+                {% for mensaje in mesajes_flash %}
+                   <li>{{ mensaje }}</li>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </section>
+{% endblock %}

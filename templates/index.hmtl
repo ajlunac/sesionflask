@@ -1,0 +1,19 @@
+{% extends "./base.html" %}
+
+{% block titulo %}
+    Usuario autenticado
+{% endblock %}
+
+{% block contenido %}
+    <section>
+        <h3>Usuario autenticado</h3>
+        <p>Estas dentro!!</p>
+        {% with mesajes_flash = get_flashed_messages() %}
+            {% if mesajes_flash %}
+                {% for mensaje in mesajes_flash %}
+                   <li>{{ mensaje }}</li>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </section>
+{% endblock %}
